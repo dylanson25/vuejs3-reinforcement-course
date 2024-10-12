@@ -1,6 +1,7 @@
 import "./style.css";
 import typescriptLogo from "./typescript.svg";
 import { fullName } from "./bases/01-const-let";
+import "./bases/02-object";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
