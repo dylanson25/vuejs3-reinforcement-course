@@ -1,7 +1,7 @@
 import heroes, { owners, type Owner, type Hero } from "./heroes";
 
-const getHeroes = (id: number): Hero | {} =>
-  heroes.find((h) => h.id == id) ?? {};
+export const getHeroes = (id: number): Hero | undefined =>
+  heroes.find((h) => h.id == id);
 
 console.table(getHeroes(1));
 
