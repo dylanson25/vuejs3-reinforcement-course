@@ -31,8 +31,13 @@ const quotes = [
 
 const app = createApp({
   setup() {
+    const showAuthor = ref(false);
+
+    const hideAuthor = () => (showAuthor.value = !showAuthor.value);
     return {
       quotes,
+      hideAuthor,
+      showAuthor,
     };
   },
 });
