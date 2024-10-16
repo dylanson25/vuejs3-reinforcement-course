@@ -12,10 +12,23 @@
     />
   </head>
   <body class="p-5">
+    <h1 class="fs-4">SECCION 2</h1>
     <div id="app">
-      <span role="button" v-on:click="hideAuthor" class="btn btn-primary mb-2"
-        >Toggle Author</span
-      >
+      <input
+        @keypress.enter="addQuote"
+        class="mb-2 form-control"
+        type="text"
+        placeholder="Some time in a long time ..."
+      />
+      <div class="mb-2">
+        <span role="button" v-on:click="hideAuthor" class="btn btn-primary"
+          >Toggle Author</span
+        >
+        <button @click="addQuote" class="btn btn-secondary ms-2">
+          Add Quote
+        </button>
+      </div>
+      <p class="mb-2"><b>Total Items: </b>{{totalQuotes}}</p>
       <ul class="list-group">
         <li v-for=" {quote, author} of quotes" class="list-group-item">
           <div class="fs-5">{{quote}}</div>
