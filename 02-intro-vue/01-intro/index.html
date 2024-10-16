@@ -11,8 +11,14 @@
       crossorigin="anonymous"
     />
   </head>
-  <body>
-    <div id="app"></div>
+  <body class="p-5">
+    <div id="app">
+      <h3>{{message}}</h3>
+      <blockquote>{{author}}</blockquote>
+      <button v-on:click="changeQuote" class="btn btn-primary">
+        Cambiar Mensaje
+      </button>
+    </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="./app.js"></script>
