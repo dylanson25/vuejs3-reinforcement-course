@@ -14,19 +14,20 @@
   <body class="p-5">
     <h1 class="fs-4">SECCION 2</h1>
     <div id="app">
-      <input
-        @keypress.enter="addQuote"
-        class="mb-2 form-control"
-        type="text"
-        placeholder="Some time in a long time ..."
-      />
+      <form class="input-group" action="">
+        <input
+          v-model="newQuote"
+          @keypress.enter="addQuote"
+          class="form-control"
+          type="text"
+          placeholder="Some time in a long time ..."
+        />
+        <button @click="addQuote" class="btn btn-secondary">Add Quote</button>
+      </form>
       <div class="mb-2">
         <span role="button" v-on:click="hideAuthor" class="btn btn-primary"
           >Toggle Author</span
         >
-        <button @click="addQuote" class="btn btn-secondary ms-2">
-          Add Quote
-        </button>
       </div>
       <p class="mb-2"><b>Total Items: </b>{{totalQuotes}}</p>
       <ul class="list-group">

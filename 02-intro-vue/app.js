@@ -32,11 +32,12 @@ const _quotes = [
 const app = createApp({
   setup() {
     const showAuthor = ref(false);
+    const newQuote = ref("");
     const quotes = ref(_quotes);
     const hideAuthor = () => (showAuthor.value = !showAuthor.value);
 
     const addQuote = () => {
-      quotes.value.push({ quote: "This Is halloween", author: "Jack" });
+      quotes.value.push({ quote: newQuote.value, author: "Jack" });
     };
 
     const totalQuotes = computed(() => quotes.value.length);
@@ -46,6 +47,7 @@ const app = createApp({
       hideAuthor,
       showAuthor,
       addQuote,
+      newQuote,
     };
   },
 });
