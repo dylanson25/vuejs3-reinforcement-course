@@ -2,7 +2,6 @@
   <section class="card">
     <div class="card-body">
       <p><b>Counter:</b> {{ counter }}</p>
-      <hr />
       <p><b>Squere:</b> {{ squereCounter }}</p>
     </div>
     <div class="card-footer">
@@ -14,8 +13,13 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
+interface Props {
+  value: number;
+}
 
-const counter = ref(0);
+const props = defineProps<Props>();
+
+const counter = ref(props.value);
 const squereCounter = computed(() => counter.value * counter.value);
 </script>
 
