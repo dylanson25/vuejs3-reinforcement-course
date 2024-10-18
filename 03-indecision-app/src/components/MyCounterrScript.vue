@@ -11,16 +11,23 @@
   </section>
 </template>
 
-<script setup lang="ts">
-import { computed, ref } from 'vue';
+<script lang="ts">
+import { defineComponent, ref, computed } from 'vue';
+
 interface Props {
   value: number;
 }
+export default defineComponent({
+  setup(props: Props) {
+    const counter = ref(props.value);
+    const squereCounter = computed(() => counter.value * counter.value);
 
-const props = defineProps<Props>();
-
-const counter = ref(props.value);
-const squereCounter = computed(() => counter.value * counter.value);
+    return {
+      counter,
+      squereCounter,
+    };
+  },
+});
 </script>
 
 <style scoped>
