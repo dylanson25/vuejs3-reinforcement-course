@@ -12,15 +12,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { useCounter } from '@/composables/useCounter';
+
 interface Props {
   value: number;
 }
 
 const props = defineProps<Props>();
-
-const counter = ref(props.value);
-const squereCounter = computed(() => counter.value * counter.value);
+const { counter, squereCounter } = useCounter(props.value);
 </script>
 
 <style scoped>

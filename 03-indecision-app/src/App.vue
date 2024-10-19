@@ -1,5 +1,5 @@
 <template>
-  <main class="container p-4">
+  <main class="container d-flex flex-column align-items-center p-4">
     <MyCounter :value="initialValue" />
     <hr />
     <MyCounter2 :value="initialValue + 5" />
