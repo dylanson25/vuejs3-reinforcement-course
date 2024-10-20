@@ -1,27 +1,31 @@
 import { ref } from 'vue'
 import { type ChatMessage as IChatMessage } from '@/interfaces/chat-message.interface'
+import { type AnswerYesNo } from '@/interfaces/yes-no-api.interface'
+import { sleep } from '@/helpers/sleeps'
 
 export const useChat = () => {
-  const messages = ref<IChatMessage[]>([
-    {
-      id: new Date().getTime(),
-      message: 'Tienes Hambre',
-      itsMine: true,
-    },
-    {
-      id: new Date().getTime(),
-      message: 'Si',
-      itsMine: false,
-      image:
-        'https://yesno.wtf/assets/yes/2-5df1b403f2654fa77559af1bf2332d7a.gif',
-    },
-  ])
+  const messages = ref<IChatMessage[]>([])
 
-  const onMessage = (text: string) => {
+  const getResponse = async (): Promise<AnswerYesNo> => {
+    const resp = await fetch('https://yesno.wtf/api')
+    const data = (await resp.json()) as AnswerYesNo
+    return data
+  }
+
+  const onMessage = async (text: string) => {
     messages.value.push({
       id: new Date().getTime(),
       message: text,
       itsMine: true,
+    })
+    if (!text.endsWith('?')) return
+    const { answer, image } = await getResponse()
+    await sleep(1.5)
+    messages.value.push({
+      id: new Date().getTime(),
+      message: answer,
+      itsMine: false,
+      image,
     })
   }
   return {
