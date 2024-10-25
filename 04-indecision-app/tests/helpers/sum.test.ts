@@ -1,6 +1,7 @@
 // sum.test.js
 import { expect, test } from 'vitest'
-import { sum } from '../../src/helpers/sum.helpers'
+import { sum, addArray } from '../../src/helpers/sum.helpers'
+import { describe } from 'node:test'
 
 test('adds 1 + 2 to equal 3', () => {
   // Preparacion
@@ -12,4 +13,27 @@ test('adds 1 + 2 to equal 3', () => {
 
   // Comportamiento esperado
   expect(result).toBe(a + b)
+})
+
+describe('Add array Function', () => {
+  test('Should return the proper value', () => {
+    // Preparacion
+    const numbers: number[] = [1, 2, 3, 4, 5, 6]
+
+    // Estimulo
+    const result = addArray(numbers)
+
+    // Comportamiento esperado
+    expect(result).toBe(21)
+  })
+  test('Should return 0', () => {
+    // Preparacion
+    const numbers: number[] = []
+
+    // Estimulo
+    const result = addArray(numbers)
+
+    // Comportamiento esperado
+    expect(result).toBe(0)
+  })
 })
